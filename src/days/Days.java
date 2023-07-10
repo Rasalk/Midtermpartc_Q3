@@ -17,18 +17,44 @@ import java.util.Scanner;
  * @author sivagamasrinivasan
  */
 public class Days {
-
+    enum Day {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY,SATURDAY,SUNDAY
+    }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
          
-    Scanner in =new Scanner(System.in);
-    System.out.println("Enter the day number (one,two,three,four,five) in string");
-    String code = in.next();
-    Weekdays t= new Weekdays();
-    t.nameOfDay(code); 
-    }// TODO code application logic here
-    
-    
+    Scanner in = new Scanner(System.in);
+        System.out.println("Enter the day number (1-7):");
+        int code = in.nextInt();
+        
+        if (code >= 1 && code <= 7) {
+            Day day = getDay(code);
+            System.out.println(day.name());
+        } else {
+            System.out.println("Invalid day number");
+        }
+    }
+
+    private static Day getDay(int code) {
+        switch (code) {
+            case 1:
+                return Day.MONDAY;
+            case 2:
+                return Day.TUESDAY;
+            case 3:
+                return Day.WEDNESDAY;
+            case 4:
+                return Day.THURSDAY;
+            case 5:
+                return Day.FRIDAY;
+            case 6:
+                return Day.SATURDAY;
+            case 7:
+                return Day.SUNDAY;
+            default:
+                return null;
+        }
+    }
 }
